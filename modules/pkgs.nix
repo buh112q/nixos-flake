@@ -11,5 +11,6 @@
 	 	fuzzel
 	  	chromium
 	  	localsend
+	  	zed-editor
 	  ];
 }
