@@ -9,5 +9,7 @@
 	 	fuzzel
 	  	chromium
 	  	localsend
+	  	wl-clipboard
+		xwayland-satellite
 	  ];
 }

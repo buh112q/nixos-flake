@@ -81,8 +81,6 @@
   	micro
   	git
   	gh
-  	wl-clipboard
-  	xwayland-satellite	
   ];
 
   # Enable the OpenSSH daemon.
