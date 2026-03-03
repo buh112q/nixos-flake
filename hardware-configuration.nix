@@ -5,28 +5,37 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/700085e6-37dd-4cd5-bf6f-335a35e0f9c6";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/a4a2d00f-a7d2-4b96-b08c-f61274c6683d";
+      fsType = "xfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/0FFB-D52E";
+    { device = "/dev/disk/by-uuid/12CE-A600";
       fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/6bdc46ec-536e-4ca8-9d96-5749b9212416"; }
-    ];
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/92908959-e3de-4832-b38b-de4a4030068c";
+      fsType = "xfs";
+    };
+
+  fileSystems."/SATA" =
+    { device = "/dev/disk/by-uuid/56dffcc4-4db4-4d53-b4ee-47d40f74e79d";
+      fsType = "ext4";
+    };
+
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
