@@ -3,7 +3,7 @@
   imports =
     [ 
       ./hardware-configuration.nix
-      ./modules/pkgs.nix
+      ./modules/niri-noctalia.nix
       ./modules/lesser-pkgs.nix
     ];
   boot.loader.systemd-boot.enable = true;
@@ -25,11 +25,6 @@
       algorithm = "lz4";
       memoryPercent = 50;
     };
-  #### WINDOWS_MANAGER STUFFs
-  services.displayManager.ly.enable = true;
-  programs.niri.enable = true;
-  services.gvfs.enable = true;
-  programs.dconf.enable = true;
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -39,6 +34,9 @@
   	enable = true;
   	enable32Bit = true;
   };
+  services.power-profiles-daemon.enable = true;
+  services.upower.enable = true;
+  hardware.i2c.enable = true;
   hardware.bluetooth.enable = true;
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -61,7 +59,7 @@
     isNormalUser = true;
     shell = pkgs.fish;
     description = "sock";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "i2c" ];
     packages = with pkgs; [];
   };
   # List packages installed in system profile. To search, run:
