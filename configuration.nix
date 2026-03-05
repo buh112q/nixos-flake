@@ -16,8 +16,9 @@
   time.timeZone = "Asia/Bangkok";
   i18n.defaultLocale = "en_US.UTF-8";
   fonts.packages = with pkgs; [
+	noto-fonts
+	noto-fonts-cjk-sans
 	nerd-fonts.jetbrains-mono
-	font-awesome
   ];
   zramSwap = {
       enable = true;

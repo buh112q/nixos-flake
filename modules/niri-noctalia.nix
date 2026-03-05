@@ -13,6 +13,7 @@
 	  	chromium
 	  	localsend
 	  	zed-editor
+		bibata-cursors
 	  	papirus-icon-theme
 	  ];
 }
