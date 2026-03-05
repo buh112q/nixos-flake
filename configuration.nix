@@ -66,6 +66,9 @@
         plugins = [ "git" "sudo" "history-substring-search"  ]; # Add desired plugins
       };
     };
+  environment.sessionVariables = {
+    QS_ICON_THEME="Papirus-Dark";
+  };
   users.users.sock = {
     isNormalUser = true;
     shell = pkgs.zsh;
