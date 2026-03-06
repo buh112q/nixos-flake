@@ -7,13 +7,13 @@
 		xwayland-satellite
 	  	wl-clipboard
 	  	noctalia-shell
-	 	fuzzel
-		kitty
-		nautilus
+	 		fuzzel
+			kitty
+			nautilus
 	  	chromium
 	  	localsend
-	  	zed-editor
-		bibata-cursors
+	  	vscodium-fhs
+			bibata-cursors
 	  	papirus-icon-theme
 	  ];
 }
