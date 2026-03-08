@@ -54,7 +54,7 @@
     syntaxHighlighting.enable = true;
     ohMyZsh = {
       enable = true;
-      theme = "agnoster"; # Or choose another theme
+      theme = "agnoster";
       plugins = [
         "git"
         "sudo"
@@ -74,8 +74,6 @@
     packages = with pkgs; [ ];
   };
   nixpkgs.config.allowUnfree = true;
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     nixfmt
     micro

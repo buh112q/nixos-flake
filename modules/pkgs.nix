@@ -1,9 +1,10 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    bat
-    btop
     fastfetch
+    btop
     tree
+    bat
+    duf
   ];
 }
