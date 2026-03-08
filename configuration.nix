@@ -52,6 +52,8 @@
     #media-session.enable = true;
   };
   nixpkgs.config.allowUnfree = true;
+  services.flatpak.enable = true; ## 
+  xdg.portal.enable = true; ## for flatpak integration
   programs.steam.enable = true;
   programs.gamescope.enable = true;
   programs.chromium.enable = true;
