@@ -1,14 +1,21 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
+    ./modules/hardware.nix
+    ./modules/env.nix
+    ./modules/gaming.nix
     ./modules/niri-noctalia.nix
-    ./modules/lesser-pkgs.nix
+    ./modules/pkgs.nix
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages; # # LTS
-  ###linuxPackges_latest
+  boot.kernelPackages = pkgs.linuxPackages_latest; # #linuxPackges_latest for latest/linuxPackages ##for lts
   networking.hostName = "NixOS";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
@@ -30,14 +37,7 @@
     layout = "us";
     variant = "";
   };
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-  services.power-profiles-daemon.enable = true;
-  services.upower.enable = true;
-  hardware.i2c.enable = true;
-  hardware.bluetooth.enable = true;
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -51,11 +51,8 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-  nixpkgs.config.allowUnfree = true;
-  services.flatpak.enable = true; ## 
-  xdg.portal.enable = true; ## for flatpak integration
-  programs.steam.enable = true;
-  programs.gamescope.enable = true;
+  services.flatpak.enable = true; # #
+  xdg.portal.enable = true; # # for flatpak integration
   programs.chromium.enable = true;
   programs.zsh = {
     enable = true;
@@ -68,11 +65,8 @@
         "git"
         "sudo"
         "history-substring-search"
-      ]; # Add desired plugins
+      ];
     };
-  };
-  environment.sessionVariables = {
-    QS_ICON_THEME = "Papirus-Dark";
   };
   users.users.sock = {
     isNormalUser = true;
@@ -85,6 +79,8 @@
     ];
     packages = with pkgs; [ ];
   };
+
+  nixpkgs.config.allowUnfree = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
