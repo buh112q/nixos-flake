@@ -1,12 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/hardware.nix
-    ./modules/env.nix
-    ./modules/gaming.nix
-    ./modules/niri-noctalia.nix
-    ./modules/pkgs.nix
+    ./hardware.nix
+    ./gaming.nix
+    ./niri-noctalia.nix
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -21,6 +24,11 @@
     noto-fonts-cjk-sans
     nerd-fonts.jetbrains-mono
   ];
+  environment.variables = {
+    QS_ICON_THEME = "Papirus-Dark";
+    EDITOR = "micro";
+    VISUAL = "micro";
+  };
   zramSwap = {
     enable = true;
     priority = 100;
@@ -71,11 +79,18 @@
       "wheel"
       "i2c"
     ];
-    packages = with pkgs; [ ];
+    packages = with pkgs; [
+      fastfetch
+      btop
+      tree
+      bat
+      duf
+    ];
   };
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     nixfmt
+    nixd
     micro
     git
     gh
