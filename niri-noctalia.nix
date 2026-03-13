@@ -5,11 +5,15 @@
   ...
 }:
 {
-  services.getty.autologinUser = "sock";
-  programs.zsh.loginShellInit = ''
-    if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-      exec niri-session
-    fi
+  services = {
+    getty.autologinUser = "sock";
+    gnome.gnome-keyring.enable = true;
+  };
+  security.pam.services.getty.enableGnomeKeyring = true;
+  environment.loginShellInit = ''
+    	if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+    		exec niri-session -l
+    	fi
   '';
   programs = {
     niri.enable = true;
