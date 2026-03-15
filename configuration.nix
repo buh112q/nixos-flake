@@ -57,19 +57,21 @@
   xdg.portal.enable = true; # # for flatpak integration
   programs.chromium.enable = true;
   programs.zsh = {
+  enable = true;
+  enableCompletion = true; # Added
+  autosuggestions.enable = true;
+  syntaxHighlighting.enable = true;
+  # Makes the substring search plugin actually work
+  interactiveShellInit = ''
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+  '';
+  ohMyZsh = {
     enable = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    ohMyZsh = {
-      enable = true;
-      theme = "agnoster";
-      plugins = [
-        "git"
-        "sudo"
-        "history-substring-search"
-      ];
-    };
+    theme = "agnoster";
+    plugins = [ "git" "sudo" "history-substring-search" ];
   };
+};
   users.users.sock = {
     isNormalUser = true;
     shell = pkgs.zsh;
@@ -77,6 +79,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "video"
       "i2c"
     ];
     packages = with pkgs; [
@@ -95,12 +98,9 @@
     git
     gh
   ];
-  # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-  # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
   networking.firewall.enable = false;
   system.stateVersion = "25.11";
   nix.settings.experimental-features = [
