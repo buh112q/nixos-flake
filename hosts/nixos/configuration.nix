@@ -32,15 +32,15 @@
     power-profiles-daemon.enable = true;
     upower.enable = true;
   };
-  # services.pulseaudio.enable = true;
+
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
-    wireplumber.enable = true;
     pulse.enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
+    wireplumber.enable = true;
   };
   programs.zsh.enable = true;
   users.users.sock = {
