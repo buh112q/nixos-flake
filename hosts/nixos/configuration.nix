@@ -1,0 +1,71 @@
+{
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ./hardware-configuration.nix
+    ../../modules/nixos/noctalia-niri.nix
+    ../../modules/nixos/gaming.nix
+  ];
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  networking.hostName = "nixos"; # Define your hostname.
+  networking.networkmanager.enable = true;
+  time.timeZone = "Asia/Bangkok";
+  i18n.defaultLocale = "en_US.UTF-8";
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    nerd-fonts.jetbrains-mono
+  ];
+  # hardware host
+  hardware = {
+    graphics.enable = true;
+    graphics.enable32Bit = true;
+    i2c.enable = true;
+    bluetooth.enable = true;
+  };
+  services = {
+    power-profiles-daemon.enable = true;
+    upower.enable = true;
+  };
+  # services.pulseaudio.enable = true;
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    wireplumber.enable = true;
+    enable = true;
+    pulse.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+  };
+  programs.zsh.enable = true;
+  users.users.sock = {
+    shell = pkgs.zsh;
+    isNormalUser = true;
+    extraGroups = [
+      "wheel" # Enable ‘sudo’ for the user.
+      "networkmanager"
+      "video"
+    ];
+    packages = with pkgs; [ ];
+  };
+  environment.systemPackages = with pkgs; [
+    vim
+    wget
+    nixfmt
+    nixd
+    micro
+    git
+    gh
+  ];
+  # services.openssh.enable = true;
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.enable = false;
+  system.stateVersion = "25.11"; # Did you read the comment?
+}
