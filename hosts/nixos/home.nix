@@ -9,20 +9,32 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    shellAliases = { };
+
+    history.size = 10000;
+    history.ignoreAllDups = true;
+    history.path = "$HOME/.zsh_history";
+    history.ignorePatterns = [
+      "rm *"
+      "pkill *"
+      "cp *"
+    ];
     oh-my-zsh = {
       enable = true;
-      theme = "agnoster";
       plugins = [
         "git"
         "sudo"
         "history-substring-search"
       ];
+      theme = "agnoster";
     };
   };
   programs.git = {
     enable = true;
-    userName = "buh112q";
-    userEmail = "lnwpoom.zaa123@gmail.com";
+    settings.user = {
+      name = "buh112q";
+      email = "lnwpoom.zaa123@gmail.com";
+    };
   };
   home.packages = with pkgs; [
     fastfetch
@@ -34,7 +46,7 @@
   home.file = { };
   home.sessionVariables = {
     QS_ICON_THEME = "Papirus-Dark";
-    # EDITOR = "emacs";
+    EDITOR = "micro";
   };
   programs.home-manager.enable = true;
 }
