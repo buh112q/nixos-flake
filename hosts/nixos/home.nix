@@ -33,6 +33,7 @@
   ];
   home.file = { };
   home.sessionVariables = {
+    QS_ICON_THEME = "Papirus-Dark";
     # EDITOR = "emacs";
   };
   programs.home-manager.enable = true;
