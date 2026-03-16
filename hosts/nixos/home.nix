@@ -2,7 +2,7 @@
 {
   home.username = "sock";
   home.homeDirectory = "/home/sock";
-  home.stateVersion = "25.11"; # Please read the comment before changing.
+  home.stateVersion = "25.11";
 
   programs.zsh = {
     enable = true;
