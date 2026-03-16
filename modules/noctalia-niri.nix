@@ -19,7 +19,6 @@
     wl-clipboard
     noctalia-shell
     fuzzel
-    kitty
     nautilus
     chromium
     localsend

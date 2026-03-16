@@ -51,7 +51,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = [
-      "wheel" # Enable ‘sudo’ for the user.
+      "wheel"
       "networkmanager"
       "video"
     ];

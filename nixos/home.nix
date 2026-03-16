@@ -1,4 +1,7 @@
 {pkgs, ...}: {
+  imports = [
+    ../modules/home-manager/foot.nix
+  ];
   home.username = "sock";
   home.homeDirectory = "/home/sock";
   home.stateVersion = "25.11";
