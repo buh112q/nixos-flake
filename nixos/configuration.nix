@@ -7,13 +7,16 @@
     ./hardware-configuration.nix
     ../modules/noctalia-niri.nix
     ../modules/gaming.nix
+    ../modules/nvf.nix
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
+  networking.firewall.enable = false;
+
   time.timeZone = "Asia/Bangkok";
   i18n.defaultLocale = "en_US.UTF-8";
   fonts.packages = with pkgs; [
@@ -22,6 +25,7 @@
     nerd-fonts.jetbrains-mono
   ];
   # hardware host
+  zramSwap.enable = true;
   hardware = {
     graphics.enable = true;
     graphics.enable32Bit = true;
@@ -53,6 +57,7 @@
     ];
     packages = with pkgs; [];
   };
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   environment.systemPackages = with pkgs; [
     micro
     wget
@@ -63,10 +68,8 @@
     git
     gh
   ];
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   # services.openssh.enable = true;
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  networking.firewall.enable = false;
   system.stateVersion = "25.11";
 }
