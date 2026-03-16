@@ -1,5 +1,5 @@
 {
-  description = "Nixos#flake,home-manager";
+  description = "nixos#flake,home-manager";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
@@ -18,10 +18,10 @@
             inputs.home-manager.nixosModules.default
             {
               home-manager = {
-                extraSpecialArgs = { inherit inputs; };
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
+                extraSpecialArgs = { inherit inputs; };
                 users.sock = import ./hosts/nixos/home.nix;
               };
             }
