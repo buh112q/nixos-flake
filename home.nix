@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ../modules/home-manager/foot.nix
+    ./home-manager/foot.nix
   ];
   home.username = "sock";
   home.homeDirectory = "/home/sock";
