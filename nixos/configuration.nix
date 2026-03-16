@@ -1,8 +1,8 @@
 {
   pkgs,
+  inputs,
   ...
-}:
-{
+}: {
   imports = [
     ./hardware-configuration.nix
     ../modules/noctalia-niri.nix
@@ -51,17 +51,19 @@
       "networkmanager"
       "video"
     ];
-    packages = with pkgs; [ ];
+    packages = with pkgs; [];
   };
   environment.systemPackages = with pkgs; [
-    vim
-    wget
-    nixfmt
-    nixd
     micro
+    wget
+    vim
+    nixd
+    nixfmt
+    alejandra
     git
     gh
   ];
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   # services.openssh.enable = true;
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

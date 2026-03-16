@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.username = "sock";
   home.homeDirectory = "/home/sock";
   home.stateVersion = "25.11";
@@ -9,7 +8,7 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    shellAliases = { };
+    shellAliases = {};
 
     history.size = 10000;
     history.ignoreAllDups = true;
@@ -43,7 +42,7 @@
     bat
     duf
   ];
-  home.file = { };
+  home.file = {};
   home.sessionVariables = {
     QS_ICON_THEME = "Papirus-Dark";
     EDITOR = "micro";

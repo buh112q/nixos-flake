@@ -1,8 +1,4 @@
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   programs = {
     steam.enable = true;
     gamescope.enable = true;
