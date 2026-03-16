@@ -5,8 +5,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/nixos/noctalia-niri.nix
-    ../../modules/nixos/gaming.nix
+    ../modules/noctalia-niri.nix
+    ../modules/gaming.nix
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

@@ -14,7 +14,7 @@
         nixos = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
-            ./hosts/nixos/configuration.nix
+            ./nixos/configuration.nix
             inputs.home-manager.nixosModules.default
             {
               home-manager = {
@@ -22,7 +22,7 @@
                 useUserPackages = true;
                 backupFileExtension = "backup";
                 extraSpecialArgs = { inherit inputs; };
-                users.sock = import ./hosts/nixos/home.nix;
+                users.sock = import ./nixos/home.nix;
               };
             }
             {
