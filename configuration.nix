@@ -59,14 +59,10 @@
   };
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
   environment.systemPackages = with pkgs; [
-    micro
-    wget
-    vim
-    nixd
-    nixfmt
     alejandra
+    nixd
+    micro
     git
-    gh
   ];
   # services.openssh.enable = true;
   # networking.firewall.allowedTCPPorts = [ ... ];
