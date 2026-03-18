@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./modules/ssh.nix
     ./modules/noctalia-niri.nix
     ./modules/gaming.nix
     ./modules/nvf.nix
@@ -64,8 +65,5 @@
     micro
     git
   ];
-  # services.openssh.enable = true;
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
   system.stateVersion = "25.11";
 }
