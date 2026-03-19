@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./home-manager/ghostty.nix
     ./home-manager/foot.nix
   ];
   home.username = "sock";
