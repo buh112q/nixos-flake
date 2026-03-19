@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./home-manager/ghostty.nix
+    ./home-manager/foot.nix
   ];
   home.username = "sock";
   home.homeDirectory = "/home/sock";
@@ -39,11 +40,13 @@
     };
   };
   home.packages = with pkgs; [
-    fastfetch
     btop
     tree
     bat
     duf
+    fzf
+    ripgrep
+    fastfetch
   ];
   home.file = {};
   home.sessionVariables = {
