@@ -10,10 +10,15 @@
     ./modules/gaming.nix
     ./modules/nvf.nix
   ];
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [
+      "quiet"
+      "splash"
+    ];
+  };
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
