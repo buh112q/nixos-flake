@@ -1,10 +1,15 @@
 {pkgs, ...}: {
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+  };
   programs = {
-    steam.enable = true;
     gamescope.enable = true;
+    gamemode.enable = true;
   };
   environment.systemPackages = with pkgs; [
-    goverlay
     protonplus
+    goverlay
+    heroic
   ];
 }
