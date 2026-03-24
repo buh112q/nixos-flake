@@ -26,7 +26,6 @@
       plugins = [
         "git"
         "sudo"
-        "history-substring-search"
       ];
       theme = "agnoster";
     };

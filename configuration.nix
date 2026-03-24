@@ -42,6 +42,8 @@
     power-profiles-daemon.enable = true;
     upower.enable = true;
   };
+  ## flatpak
+  services.flatpak.enable = true;
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
