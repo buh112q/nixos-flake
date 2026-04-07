@@ -4,13 +4,13 @@
   ...
 }: {
   flake.nixosModules.gaming = {pkgs, ...}: {
-    programs.steam = {
+    programs = {
+      steam = {
       enable = true;
       extraCompatPackages = with pkgs; [
         proton-ge-bin
       ];
     };
-    programs = {
       gamemode.enable = true;
       gamescope = {
         enable = true;
