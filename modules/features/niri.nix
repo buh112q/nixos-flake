@@ -30,6 +30,7 @@
       enableCalendarEvents = true; # Calendar integration (khal)
       enableClipboardPaste = true; # Pasting from the clipboard history (wtype)
     };
+    services.udisks2.enable = true;
     services.gvfs.enable = true;
     environment.systemPackages = with pkgs; [
       xwayland-satellite
@@ -38,8 +39,6 @@
       librewolf
       localsend
       vscodium-fhs
-      bibata-cursors
-      papirus-icon-theme
     ];
   };
 }
