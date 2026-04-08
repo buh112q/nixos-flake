@@ -59,7 +59,12 @@
       alsa.support32Bit = true;
       wireplumber.enable = true;
     };
-    programs.zsh.enable = true;
+    programs.zsh = {
+      enable = true;
+      enableCompletion = true;
+      autosuggestions.enable = true;
+      syntaxHighlighting.enable = true;
+    };
     users.users.sock = {
       shell = pkgs.zsh;
       isNormalUser = true;
