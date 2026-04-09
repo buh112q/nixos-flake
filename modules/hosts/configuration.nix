@@ -65,6 +65,14 @@
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
     };
+    programs.nh ={
+      enable = true;
+      clean = {
+        enable = true;
+        dates = "weekly";
+        extraArgs = "--keep 5";
+      };
+    };
     programs.git = {
       enable = true;
     };
@@ -79,10 +87,9 @@
     };
     nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     environment.systemPackages = with pkgs; [
-      alejandra
-      nixd
       micro
-      nh
+      nixd
+      alejandra
     ];
     nixpkgs.config.allowUnfree = true;
     system.stateVersion = "25.11";
