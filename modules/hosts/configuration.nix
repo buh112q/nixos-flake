@@ -96,7 +96,13 @@
         "networkmanager"
         "gamemode"
       ];
-      packages = with pkgs; [];
+      packages = with pkgs; [
+      	fastfetch
+      	btop
+      	fzf
+      	duf
+      	tree
+      ];
     };
     nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     environment.systemPackages = with pkgs; [
