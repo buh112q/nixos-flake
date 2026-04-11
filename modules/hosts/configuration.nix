@@ -6,10 +6,11 @@
   flake.nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       nixosHardware
-      nixosModule 
+      nixosModule
       gaming
       niri
       ssh
+      apps
     ];
   };
   flake.nixosModules.nixosModule = {pkgs, ...}: {
@@ -25,7 +26,7 @@
         "splash"
       ];
     };
-    networking ={
+    networking = {
       hostName = "nixos";
       networkmanager.enable = true;
       firewall.enable = false;
@@ -49,7 +50,7 @@
       upower.enable = true;
     };
     services.flatpak.enable = true;
-    programs.appimage ={
+    programs.appimage = {
       enable = true;
       binfmt = true;
     };
@@ -63,7 +64,7 @@
       wireplumber.enable = true;
     };
     programs.fish = {
-    	enable = true;
+      enable = true;
     };
     programs.zsh = {
       enable = true;
@@ -71,7 +72,7 @@
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
     };
-    programs.nh ={
+    programs.nh = {
       enable = true;
       clean = {
         enable = true;
@@ -96,20 +97,13 @@
         "networkmanager"
         "gamemode"
       ];
-      packages = with pkgs; [
-      	fastfetch
-      	btop
-      	fzf
-      	duf
-      	tree
-      ];
+      packages = with pkgs; [];
     };
     nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     environment.systemPackages = with pkgs; [
-      micro
-      gearlever
-      nixd
       alejandra
+      nixd
+      micro
     ];
     nixpkgs.config.allowUnfree = true;
     system.stateVersion = "25.11";

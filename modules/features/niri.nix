@@ -36,8 +36,6 @@
       wl-clipboard
       ghostty
       nautilus
-      localsend
-      vscodium-fhs
     ];
   };
 }
