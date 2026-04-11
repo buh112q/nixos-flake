@@ -97,6 +97,7 @@
     nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     environment.systemPackages = with pkgs; [
       micro
+      gearlever
       nixd
       alejandra
     ];
