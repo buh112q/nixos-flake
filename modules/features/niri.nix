@@ -12,10 +12,10 @@
         user = "sock";
       };
     };
-    programs = {
-      niri.enable = true;
-      dconf.enable = true;
-    };
+    programs.niri.enable = true;
+    programs.dconf.enable = true;
+    services.udisks2.enable = true;
+    services.gvfs.enable = true;
     programs.dms-shell = {
       enable = true;
       systemd = {
@@ -29,8 +29,6 @@
       enableCalendarEvents = true;
       enableClipboardPaste = true;
     };
-    services.udisks2.enable = true;
-    services.gvfs.enable = true;
     environment.systemPackages = with pkgs; [
       xwayland-satellite
       wl-clipboard
